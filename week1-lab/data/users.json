@@ -1,0 +1,132 @@
+{
+  "synthetic": true,
+  "dataset": "kestrel_users",
+  "dataset_version": "1.0",
+  "reference_date": "2026-10-31",
+  "users": [
+    {
+      "user_id": "user_customer_01",
+      "display_name": "Ada Testwell",
+      "role": "customer",
+      "email": "ada.testwell@example.com",
+      "customer_id": "cust_1007",
+      "team": null,
+      "goodwill_credit_limit_pence": 0,
+      "scopes": [
+        "read_own_cases",
+        "read_customer_documents"
+      ]
+    },
+    {
+      "user_id": "user_agent_01",
+      "display_name": "Jonah Testridge",
+      "role": "first_line_agent",
+      "email": "jonah.testridge@kestrel.example",
+      "customer_id": null,
+      "team": "technical_support",
+      "goodwill_credit_limit_pence": 2000,
+      "scopes": [
+        "read_team_cases",
+        "read_customer_documents",
+        "read_internal_documents",
+        "draft_reply",
+        "apply_goodwill_credit",
+        "request_credit_approval"
+      ]
+    },
+    {
+      "user_id": "user_supervisor_01",
+      "display_name": "Halima Sampleworth",
+      "role": "supervisor",
+      "email": "halima.sampleworth@kestrel.example",
+      "customer_id": null,
+      "team": "technical_support",
+      "goodwill_credit_limit_pence": 15000,
+      "scopes": [
+        "read_team_cases",
+        "read_customer_documents",
+        "read_internal_documents",
+        "draft_reply",
+        "apply_goodwill_credit",
+        "approve_goodwill_credit"
+      ]
+    },
+    {
+      "user_id": "user_auditor_01",
+      "display_name": "Felix Exampledale",
+      "role": "auditor",
+      "email": "felix.exampledale@kestrel.example",
+      "customer_id": null,
+      "team": null,
+      "goodwill_credit_limit_pence": 0,
+      "scopes": [
+        "read_all_cases",
+        "read_customer_documents",
+        "read_internal_documents",
+        "read_audit_trail"
+      ]
+    }
+  ],
+  "scope_definitions": [
+    {
+      "scope": "read_own_cases",
+      "applies_to": "lookup_case",
+      "condition": "case.customer_id == user.customer_id",
+      "description": "The user can look up a case only when the case belongs to the user's own customer record."
+    },
+    {
+      "scope": "read_team_cases",
+      "applies_to": "lookup_case",
+      "condition": "case.owner_team == user.team",
+      "description": "The user can look up a case only when the user's team owns it."
+    },
+    {
+      "scope": "read_all_cases",
+      "applies_to": "lookup_case",
+      "condition": "true",
+      "description": "The user can look up any case. Reading a case does not let the user change it."
+    },
+    {
+      "scope": "read_customer_documents",
+      "applies_to": "retrieval",
+      "condition": "document.audience == \"customer\"",
+      "description": "The user can receive answers from documents whose audience is customer."
+    },
+    {
+      "scope": "read_internal_documents",
+      "applies_to": "retrieval",
+      "condition": "document.audience == \"internal\"",
+      "description": "The user can also receive answers from documents whose audience is internal."
+    },
+    {
+      "scope": "draft_reply",
+      "applies_to": "draft_reply",
+      "condition": "the user can look up the case",
+      "description": "The user can ask the assistant to draft a reply on a case that the user can read. A draft is never sent by the assistant."
+    },
+    {
+      "scope": "apply_goodwill_credit",
+      "applies_to": "apply_goodwill_credit",
+      "condition": "amount_pence <= user.goodwill_credit_limit_pence and the user can look up the case",
+      "description": "The user can apply a goodwill credit up to the user's own limit. The tool arrives in Week 2."
+    },
+    {
+      "scope": "request_credit_approval",
+      "applies_to": "request_credit_approval",
+      "condition": "amount_pence > user.goodwill_credit_limit_pence and the user can look up the case",
+      "description": "The user can send a goodwill credit above the user's own limit to a supervisor for approval."
+    },
+    {
+      "scope": "approve_goodwill_credit",
+      "applies_to": "approve_goodwill_credit",
+      "condition": "amount_pence <= user.goodwill_credit_limit_pence and case.owner_team == user.team",
+      "description": "The user can approve or reject an approval request on a case that the user's team owns, up to the user's own limit."
+    },
+    {
+      "scope": "read_audit_trail",
+      "applies_to": "read_audit_trail",
+      "condition": "true",
+      "description": "The user can read the record of who called which tool on which case."
+    }
+  ]
+}

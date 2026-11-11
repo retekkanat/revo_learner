@@ -1,0 +1,9 @@
+# Local environments, caches and run output. Nothing here is course material.
+.venv/
+work/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.DS_Store
+.env

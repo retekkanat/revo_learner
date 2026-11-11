@@ -1,0 +1,139 @@
+{
+  "synthetic": true,
+  "reference_date": "2026-10-31",
+  "approval_id": "appr_0001",
+  "case_id": "case_1028",
+  "customer_id": "cust_1020",
+  "related_case_ids": [
+    "case_1010",
+    "case_1020"
+  ],
+  "owner_team": "technical_support",
+  "submitted_at": "2026-10-27T15:20:00Z",
+  "requested_by": "user_agent_01",
+  "approver_role": "supervisor",
+  "policy_document": "kd_16",
+  "request": {
+    "type": "goodwill_credit",
+    "amount_pence": 4500,
+    "currency": "GBP",
+    "reason": "The customer has had three broadband faults in seven weeks, on 8 September, 5 October and 22 October 2026, and was without service on parts of ten calendar days. Automatic compensation covered only the one day by which Kestrel missed a repair target.",
+    "requester_limit_pence": 2000,
+    "approver_limit_pence": 15000
+  },
+  "evidence_available": [
+    {
+      "evidence_id": "ev_01",
+      "kind": "case_history",
+      "source": "case_1010",
+      "summary": "The first fault was reported on 8 September 2026 and repaired on 11 September 2026, one day after the repair target. The line test placed the fault between the street cabinet and the property.",
+      "establishes": "The dates and length of the first fault, and that it was on the Kestrel network."
+    },
+    {
+      "evidence_id": "ev_02",
+      "kind": "compensation_record",
+      "source": "case_1010",
+      "summary": "Automatic compensation of £8.00 was applied on 15 September 2026 for one day after the repair target.",
+      "establishes": "The automatic compensation already paid for the first fault."
+    },
+    {
+      "evidence_id": "ev_03",
+      "kind": "case_history",
+      "source": "case_1020",
+      "summary": "The second fault was reported on 5 October 2026 and repaired on 7 October 2026, within the repair target. A fibre joint in the street was remade.",
+      "establishes": "The dates and length of the second fault, and that it was on the Kestrel network."
+    },
+    {
+      "evidence_id": "ev_04",
+      "kind": "case_history",
+      "source": "case_1028",
+      "summary": "The third fault was reported on 22 October 2026. The line test failed outside the property, and service was restored on 24 October 2026, within the repair target.",
+      "establishes": "The dates and length of the third fault, and that no automatic compensation is due for it."
+    },
+    {
+      "evidence_id": "ev_05",
+      "kind": "customer_message",
+      "source": "case_1028",
+      "summary": "On 26 October 2026 the customer complained about three faults in seven weeks and asked for compensation.",
+      "establishes": "The customer's complaint. It is the customer's description and is not evidence of cause."
+    }
+  ],
+  "evidence_missing": [
+    {
+      "evidence_id": "ev_m1",
+      "description": "The engineer's report for the visit on 24 October 2026, which records the cause of the third fault.",
+      "why_needed": "The goodwill credit policy requires evidence that the failure was Kestrel's responsibility. The case says only that the fault was outside the property.",
+      "supplied_by": "technical_support"
+    },
+    {
+      "evidence_id": "ev_m2",
+      "description": "A billing record of the credits applied to the account in the last 12 months.",
+      "why_needed": "The goodwill credit policy allows no more than one goodwill credit for the same fault, and the approver must see the compensation already paid.",
+      "supplied_by": "billing"
+    }
+  ],
+  "supplementary_evidence": [
+    {
+      "evidence_id": "ev_m1",
+      "arrives_at": "2026-11-02T10:00:00Z",
+      "source": "technical_support",
+      "summary": "The engineer's report says that water had damaged a fibre joint in the street duct outside the property. The duct is part of the Kestrel network, and the same duct section was involved in the faults of 8 September and 5 October 2026."
+    },
+    {
+      "evidence_id": "ev_m2",
+      "arrives_at": "2026-11-02T14:30:00Z",
+      "source": "billing",
+      "summary": "In the last 12 months the account received automatic compensation of £8.00 on 15 September 2026 and no goodwill credits."
+    }
+  ],
+  "decision_states": [
+    {
+      "state": "submitted",
+      "decided_by": "system",
+      "next_states": [
+        "under_review"
+      ],
+      "meaning": "The approval request has been received and is waiting for a supervisor."
+    },
+    {
+      "state": "under_review",
+      "decided_by": "supervisor",
+      "next_states": [
+        "approved",
+        "rejected",
+        "more_evidence_requested"
+      ],
+      "meaning": "A supervisor is checking the request against the goodwill credit policy and the evidence."
+    },
+    {
+      "state": "more_evidence_requested",
+      "decided_by": "supervisor",
+      "next_states": [
+        "under_review",
+        "rejected"
+      ],
+      "meaning": "The supervisor has named the evidence that is missing. The request returns to review when the evidence arrives, and is rejected if it has not arrived within 10 working days."
+    },
+    {
+      "state": "approved",
+      "decided_by": "supervisor",
+      "next_states": [
+        "applied"
+      ],
+      "meaning": "The supervisor has approved the amount. Billing applies the credit to the next bill within 5 working days."
+    },
+    {
+      "state": "rejected",
+      "decided_by": "supervisor",
+      "next_states": [],
+      "meaning": "The request is refused, and the reason is recorded in the case history."
+    },
+    {
+      "state": "applied",
+      "decided_by": "billing",
+      "next_states": [],
+      "meaning": "Billing has applied the credit to the customer's account."
+    }
+  ],
+  "initial_state": "submitted"
+}

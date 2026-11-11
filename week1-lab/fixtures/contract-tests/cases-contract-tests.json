@@ -1,0 +1,94 @@
+{
+  "synthetic": true,
+  "dataset": "kestrel_contract_tests",
+  "dataset_version": "1.0",
+  "reference_date": "2026-10-31",
+  "note": "Records built to break one contract rule each. They are never loaded into the case table.",
+  "cases": [
+    {
+      "case_id": "case_9001",
+      "customer_id": "cust_9001",
+      "customer_name": "Tess Fixturely",
+      "plan": "fibre_300",
+      "status": "open",
+      "opened_at": "2026-10-20T09:00:00Z",
+      "owner_team": "technical_support",
+      "summary": "The customer reports that the router restarts every evening.",
+      "history": [
+        {"at": "2026-10-20T09:00:00Z", "author": "customer", "note": "My router restarts at about 8 pm every evening."}
+      ],
+      "postcode_area": "KT-03"
+    },
+    {
+      "case_id": "case_9001",
+      "customer_id": "cust_9001",
+      "customer_name": "Tess Fixturely",
+      "plan": "fibre_300",
+      "status": "open",
+      "opened_at": "2026-10-20T09:00:00Z",
+      "owner_team": "technical_support",
+      "summary": "The customer reports that the router restarts every evening.",
+      "history": [
+        {"at": "2026-10-20T09:00:00Z", "author": "customer", "note": "My router restarts at about 8 pm every evening."}
+      ],
+      "postcode_area": "KT-03"
+    },
+    {
+      "case_id": "case_9002",
+      "customer_id": "cust_9002",
+      "customer_name": "Omar Stubbington",
+      "plan": "essential_80",
+      "status": "in_progress",
+      "opened_at": "2026-10-21T11:30:00Z",
+      "owner_team": "billing",
+      "history": [
+        {"at": "2026-10-21T11:30:00Z", "author": "customer", "note": "I was charged twice for October."}
+      ],
+      "postcode_area": "KT-05"
+    },
+    {
+      "case_id": "case_9003",
+      "customer_id": "cust_9003",
+      "customer_name": "Lena Mockridge",
+      "plan": "fibre_2000",
+      "status": "open",
+      "opened_at": "yesterday morning",
+      "owner_team": "technical_support",
+      "summary": "The customer asks about a plan that Kestrel does not sell.",
+      "history": [
+        {"at": "2026-10-22T08:15:00Z", "author": "customer", "note": "Can I upgrade to the fastest plan?"}
+      ],
+      "postcode_area": "KT-07"
+    },
+    {
+      "case_id": "case_9004",
+      "customer_id": "cust_9004",
+      "customer_name": "Ravi Draftwood",
+      "plan": "fibre_900",
+      "status": "resolved",
+      "opened_at": "2026-10-23T14:00:00Z",
+      "owner_team": "customer_care",
+      "summary": "The customer asked for a copy of the contract.",
+      "history": [
+        {"at": "2026-10-23T14:00:00Z", "author": "customer", "note": "Please send me a copy of my contract."},
+        {"at": "2026-10-23T16:00:00Z", "author": "customer_care", "note": "Sent the contract by email. The case is resolved."}
+      ],
+      "postcode_area": "KT-02",
+      "priority": "high"
+    },
+    {
+      "case_id": "case_9001",
+      "customer_id": "cust_9001",
+      "customer_name": "Tess Fixturely",
+      "plan": "fibre_900",
+      "status": "open",
+      "opened_at": "2026-10-20T09:00:00Z",
+      "owner_team": "technical_support",
+      "summary": "The customer reports that the router restarts every evening.",
+      "history": [
+        {"at": "2026-10-20T09:00:00Z", "author": "customer", "note": "My router restarts at about 8 pm every evening."}
+      ],
+      "postcode_area": "KT-03"
+    }
+  ]
+}
