@@ -1,0 +1,139 @@
+{
+  "synthetic": false,
+  "description": "Amazon Bedrock on-demand prices for the Claude models that the course can use, called from Europe (London) through the EU geographic cross-Region inference profiles.",
+  "source": {
+    "url": "https://aws.amazon.com/bedrock/pricing/",
+    "read_on": "2026-10-31",
+    "section": "Model Pricing, Anthropic, On-Demand and Batch pricing, Geo and In-region Cross-region Inference, Region: Europe (London)",
+    "method": "Read the JavaScript price tables in a browser on 31 October 2026.",
+    "profile_ids_checked_at": [
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-4-5.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-6.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-5.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-haiku-5-5.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html"
+    ]
+  },
+  "region": "eu-west-2",
+  "region_name": "Europe (London)",
+  "inference_type": "geo_cross_region",
+  "currency": "USD",
+  "unit": "per_million_tokens",
+  "course_model": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
+  "comparison_model": "eu.anthropic.claude-sonnet-4-6",
+  "models": [
+    {
+      "model_name": "Claude Haiku 4.5",
+      "inference_profile_id": "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
+      "lifecycle": "Active",
+      "input": 1.1,
+      "output": 5.5,
+      "cache_write_5m": 1.375,
+      "cache_write_1h": 2.2,
+      "cache_read": 0.11,
+      "batch_input": 0.55,
+      "batch_output": 2.75,
+      "long_context": null
+    },
+    {
+      "model_name": "Claude Sonnet 4.6",
+      "inference_profile_id": "eu.anthropic.claude-sonnet-4-6",
+      "lifecycle": "Active",
+      "input": 3.3,
+      "output": 16.5,
+      "cache_write_5m": 4.125,
+      "cache_write_1h": 6.6,
+      "cache_read": 0.33,
+      "batch_input": 1.65,
+      "batch_output": 8.25,
+      "long_context": null
+    },
+    {
+      "model_name": "Claude Sonnet 4.5",
+      "inference_profile_id": "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
+      "lifecycle": "Legacy; end of life 8 April 2027",
+      "input": 3.3,
+      "output": 16.5,
+      "cache_write_5m": 4.125,
+      "cache_write_1h": 6.6,
+      "cache_read": 0.33,
+      "batch_input": 1.65,
+      "batch_output": 8.25,
+      "long_context": null
+    },
+    {
+      "model_name": "Claude Haiku 5.5",
+      "inference_profile_id": "eu.anthropic.claude-haiku-5-5",
+      "lifecycle": "Active",
+      "input": 0.11,
+      "output": 0.55,
+      "cache_write_5m": 0.1375,
+      "cache_write_1h": 0.22,
+      "cache_read": 0.011,
+      "batch_input": null,
+      "batch_output": null,
+      "long_context": {
+        "applies_when": "The prompt is longer than 100,000 tokens, according to the Claude Haiku 5.5 model card.",
+        "input": 0.55,
+        "output": 2.75,
+        "cache_write_5m": 0.6875,
+        "cache_write_1h": 1.1,
+        "cache_read": 0.055
+      }
+    },
+    {
+      "model_name": "Claude Sonnet 5.5",
+      "inference_profile_id": "eu.anthropic.claude-sonnet-5-5",
+      "lifecycle": "Active",
+      "input": 2.2,
+      "output": 11.0,
+      "cache_write_5m": 2.75,
+      "cache_write_1h": 4.4,
+      "cache_read": 0.11,
+      "batch_input": null,
+      "batch_output": null,
+      "long_context": null
+    }
+  ],
+  "managed_knowledge_bases": {
+    "source_url": "https://aws.amazon.com/bedrock/pricing/",
+    "read_on": "2026-10-31",
+    "section": "Knowledge Bases, Managed Knowledge Bases",
+    "currency": "USD",
+    "retrieve_per_1000_requests": 1.0,
+    "storage_per_gb_month": 5.0,
+    "agentic_retrieve_per_1000_requests": 4.0,
+    "agentic_underlying_retrieve_per_1000_requests": 1.0,
+    "managed_parsing_embeddings_reranking": 0.0,
+    "notes": [
+      "Storage is charged per GB of raw data a month. The 25 Kestrel documents come to well under 1 MB.",
+      "An agentic retrieval call costs $4.00 per 1,000 calls plus $1.00 per 1,000 of the Retrieve calls it makes underneath.",
+      "The managed parser, the managed embedding model and the managed reranker cost nothing extra. Choosing your own embedding or reranking model adds that model's charges.",
+      "The table has no Region selector. AgentCore Gateway charges apply when the knowledge base is called through Gateway, and CloudWatch charges apply when observability is turned on."
+    ]
+  },
+  "global_cross_region_for_comparison": {
+    "note": "The same page lists lower prices for the global inference profiles. The course uses the EU profiles, so these figures are for comparison only. The global rows for the 4.5 models were not recorded.",
+    "Claude Haiku 5.5": {
+      "input": 0.1,
+      "output": 0.5,
+      "cache_write_5m": 0.125,
+      "cache_write_1h": 0.2,
+      "cache_read": 0.01
+    },
+    "Claude Sonnet 5.5": {
+      "input": 2.0,
+      "output": 10.0,
+      "cache_write_5m": 2.5,
+      "cache_write_1h": 4.0,
+      "cache_read": 0.1
+    }
+  },
+  "notes": [
+    "The course uses Claude Haiku 4.5 and compares it with Claude Sonnet 4.6 on Day 2. The register also includes prices for Sonnet 4.5 and the two 5.5 models. Model availability and lifecycle were checked on 31 October 2026.",
+    "Batch inference is shown as N/A for both 5.5 models, and with the prices above for the 4.x models.",
+    "The Claude Sonnet 5.5 cache read price is $0.11 per million tokens for the EU inference profile, as checked on 31 October 2026.",
+    "The model cards say that charges for these models appear on the AWS bill and in AWS Cost Explorer under the model provider, not under Amazon Bedrock.",
+    "Recheck these prices and the lifecycle stages on the pricing page and the model cards before each cohort, and update read_on."
+  ]
+}

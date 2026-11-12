@@ -1,0 +1,298 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CourseServicesInLondonAndVirginia",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:*",
+        "bedrock-agentcore:*",
+        "lambda:*",
+        "logs:*",
+        "cloudwatch:*",
+        "xray:*",
+        "s3:*",
+        "dynamodb:*",
+        "cognito-idp:*",
+        "cognito-identity:*",
+        "apigateway:*",
+        "events:*",
+        "scheduler:*",
+        "sqs:*",
+        "sns:*",
+        "ssm:*",
+        "secretsmanager:*",
+        "kms:Describe*",
+        "kms:List*",
+        "kms:GenerateDataKey*",
+        "kms:Decrypt",
+        "kms:Encrypt",
+        "ecr:*",
+        "codebuild:*",
+        "cloudformation:*",
+        "ec2:Describe*",
+        "ec2:CreateVpc*",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:AuthorizeSecurityGroup*",
+        "ec2:RevokeSecurityGroup*",
+        "ec2:CreateVpcEndpoint",
+        "ec2:DeleteVpcEndpoints",
+        "ec2:CreateTags",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSubnet",
+        "ec2:DeleteVpc",
+        "sts:GetCallerIdentity",
+        "sts:GetSessionToken",
+        "cloudtrail:LookupEvents",
+        "cloudtrail:Describe*",
+        "cloudtrail:Get*",
+        "cloudtrail:List*",
+        "servicequotas:Get*",
+        "servicequotas:List*",
+        "tag:*",
+        "resource-groups:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": [
+            "eu-west-2",
+            "us-east-1"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "InvokeModelsAnywhere",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "bedrock:GetInferenceProfile",
+        "bedrock:ListInferenceProfiles",
+        "bedrock:GetFoundationModel",
+        "bedrock:ListFoundationModels",
+        "bedrock:GetFoundationModelAvailability",
+        "bedrock:GetUseCaseForModelAccess",
+        "bedrock:PutUseCaseForModelAccess",
+        "bedrock:ListFoundationModelAgreementOffers",
+        "bedrock:CreateFoundationModelAgreement"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "MarketplaceForBedrockModels",
+      "Effect": "Allow",
+      "Action": [
+        "aws-marketplace:ViewSubscriptions",
+        "aws-marketplace:Subscribe"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ReadIam",
+      "Effect": "Allow",
+      "Action": [
+        "iam:Get*",
+        "iam:List*",
+        "iam:SimulatePrincipalPolicy",
+        "iam:GenerateServiceLastAccessedDetails"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ManageCourseRolesOnly",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:UpdateRole",
+        "iam:UpdateAssumeRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:PassRole",
+        "iam:CreatePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:DeletePolicy",
+        "iam:DeletePolicyVersion",
+        "iam:TagPolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:role/fde-*",
+        "arn:aws:iam::*:role/AgentCore-*",
+        "arn:aws:iam::*:role/AmazonBedrockAgentCore*",
+        "arn:aws:iam::*:role/service-role/*",
+        "arn:aws:iam::*:policy/fde-*",
+        "arn:aws:iam::*:policy/service-role/*"
+      ]
+    },
+    {
+      "Sid": "ServiceLinkedRoles",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateServiceLinkedRole"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "NeverTheExpensiveServices",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:RequestSpotInstances",
+        "ec2:RequestSpotFleet",
+        "ec2:CreateFleet",
+        "ec2:PurchaseReservedInstancesOffering",
+        "ec2:PurchaseHostReservation",
+        "ec2:CreateCapacityReservation",
+        "redshift:*",
+        "redshift-serverless:*",
+        "elasticmapreduce:*",
+        "eks:*",
+        "es:*",
+        "opensearch:*",
+        "kinesis:*",
+        "glue:*",
+        "athena:*",
+        "savingsplans:*",
+        "sagemaker:CreateNotebookInstance",
+        "sagemaker:CreateDomain",
+        "sagemaker:CreateApp",
+        "sagemaker:CreateSpace",
+        "sagemaker:CreateCluster",
+        "sagemaker:CreateHyperParameterTuningJob",
+        "sagemaker:CreateProcessingJob",
+        "sagemaker:CreateTransformJob",
+        "sagemaker:CreateInference*",
+        "sagemaker:CreateMlflow*",
+        "sagemaker:CreatePartnerApp",
+        "sagemaker:CreateReservedCapacity",
+        "sagemaker:CreateTrainingPlan",
+        "sagemaker:CreateAutoMLJob*",
+        "sagemaker:CreateCompilationJob",
+        "sagemaker:CreateOptimizationJob",
+        "sagemaker:CreateLabelingJob",
+        "sagemaker:CreateMonitoringSchedule",
+        "ecs:CreateCapacityProvider",
+        "ecs:PutAccountSetting*",
+        "aoss:UpdateAccountSettings",
+        "aoss:CreateVpcEndpoint",
+        "rds:CreateDBProxy",
+        "rds:CreateGlobalCluster",
+        "rds:CreateDBShardGroup",
+        "rds:CreateBlueGreenDeployment",
+        "rds:PurchaseReservedDBInstancesOffering",
+        "bedrock:CreateProvisionedModelThroughput",
+        "bedrock:UpdateProvisionedModelThroughput",
+        "bedrock:CreateModelCustomizationJob",
+        "bedrock:CreateModelImportJob",
+        "bedrock:CreateModelCopyJob",
+        "bedrock:CreateMarketplaceModelEndpoint",
+        "bedrock:UpdateMarketplaceModelEndpoint",
+        "bedrock:RegisterMarketplaceModelEndpoint",
+        "bedrock:DeleteEnforcedGuardrailConfiguration",
+        "bedrock:PutEnforcedGuardrailConfiguration",
+        "bedrock-agentcore:CreateCodeInterpreter",
+        "bedrock-agentcore:CreateBrowser",
+        "bedrock-agentcore:StartBrowserSession",
+        "aws-marketplace:Unsubscribe",
+        "aws-marketplace:CreateAgreementRequest",
+        "aws-marketplace:AcceptAgreementRequest",
+        "organizations:*",
+        "account:*",
+        "billing:*",
+        "budgets:*",
+        "ce:*",
+        "iam:CreateUser",
+        "iam:CreateAccessKey",
+        "iam:CreateLoginProfile",
+        "iam:AttachUserPolicy",
+        "iam:PutUserPolicy",
+        "iam:DeleteUser*",
+        "iam:UpdateUser",
+        "iam:DeactivateMFADevice",
+        "iam:DeleteVirtualMFADevice"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "OnlyTheCourseModelsFromMarketplace",
+      "Effect": "Deny",
+      "Action": "aws-marketplace:Subscribe",
+      "Resource": "*",
+      "Condition": {
+        "ForAnyValue:StringNotEquals": {
+          "aws-marketplace:ProductId": [
+            "prod-xdkflymybwmvi",
+            "prod-ffvjxvh4ltq64"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "BatchInferenceAndLoggingNotInVirginia",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:CreateModelInvocationJob",
+        "bedrock:PutModelInvocationLoggingConfiguration",
+        "bedrock:DeleteModelInvocationLoggingConfiguration"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "us-east-1"
+        }
+      }
+    },
+    {
+      "Sid": "NoAdministratorPoliciesOnRoles",
+      "Effect": "Deny",
+      "Action": "iam:AttachRolePolicy",
+      "Resource": "*",
+      "Condition": {
+        "ArnLike": {
+          "iam:PolicyARN": [
+            "arn:aws:iam::aws:policy/AdministratorAccess",
+            "arn:aws:iam::aws:policy/PowerUserAccess",
+            "arn:aws:iam::aws:policy/IAMFullAccess"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "NoSelfEdit",
+      "Effect": "Deny",
+      "Action": [
+        "iam:CreatePolicyVersion",
+        "iam:DeletePolicyVersion",
+        "iam:SetDefaultPolicyVersion",
+        "iam:DeletePolicy"
+      ],
+      "Resource": "arn:aws:iam::*:policy/fde-learner-access*"
+    },
+    {
+      "Sid": "NoUserChanges",
+      "Effect": "Deny",
+      "Action": [
+        "iam:DetachUserPolicy",
+        "iam:DeleteUserPolicy",
+        "iam:PutUserPermissionsBoundary",
+        "iam:DeleteUserPermissionsBoundary",
+        "iam:UpdateAccessKey",
+        "iam:DeleteAccessKey",
+        "iam:CreateServiceSpecificCredential",
+        "iam:UpdateLoginProfile",
+        "iam:DeleteLoginProfile",
+        "iam:EnableMFADevice",
+        "iam:ResyncMFADevice",
+        "iam:CreateVirtualMFADevice"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
